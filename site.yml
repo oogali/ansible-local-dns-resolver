@@ -1,0 +1,15 @@
+---
+
+- name: apply base configuration to all nodes
+  hosts: all
+  remote_user: root
+
+  roles:
+    - common
+
+- name: configure and deploy local dns resolver
+  hosts: resolvers
+  remote_user: root
+
+  roles:
+    - resolver

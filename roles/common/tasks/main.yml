@@ -1,0 +1,18 @@
+---
+- name: Install EPEL repo on RHEL/CentOS systems
+  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ansible_lsb.major_release}}.noarch.rpm state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Install git
+  package: name=git state=present
+
+- name: Install curl
+  package: name=curl state=present
+
+- name: Install rsync
+  package: name=rsync state=present
+
+- name: Install sudo
+  package: name=sudo state=present
+
+

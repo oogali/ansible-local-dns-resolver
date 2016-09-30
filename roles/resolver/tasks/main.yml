@@ -1,0 +1,15 @@
+---
+- name: Install unbound
+  yum: name=unbound state=present
+
+- name: Remove example DNSSEC key
+  file: path=/etc/unbound/keys.d/example.com.key state=absent
+
+- name: Remove example zone configuration
+  file: path=/etc/unbound/conf.d/example.com.conf state=absent
+
+- name: Remove example local blocking configuration
+  file: path=/etc/unbound/local.d/block-example.com.conf state=absent
+
+- name: Install unbound configuration
+  copy: src=templates/etc-unbound-unbound.conf dest=/etc/unbound/unbound.conf
